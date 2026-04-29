@@ -26,7 +26,6 @@ services:
   - type: cron
     name: weekly-spending-summary
     env: python
-    plan: free
     schedule: "0 8 * * 0"
     buildCommand: pip install -r requirements.txt
     startCommand: python tools/weekly_summary.py
