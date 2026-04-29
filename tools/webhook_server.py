@@ -54,10 +54,6 @@ def _reply(message: str) -> str:
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    # Validate Twilio signature in production
-    if os.environ.get("FLASK_ENV") != "development" and not _validate_twilio_request():
-        return "Forbidden", 403
-
     body = request.form.get("Body", "").strip()
     num_media = int(request.form.get("NumMedia", 0))
     sender = request.form.get("From", "")
